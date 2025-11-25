@@ -1,0 +1,34 @@
+<Window
+    x:Class="BgLabelControlApp.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BgLabelControlApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="20">
+        <Button x:Name="myButton" Click="myButton_Click" Width="100" Height="40">Click Me</Button>
+
+        <local:BgLabelControl 
+            x:Name="MyBgControl" 
+            Width="200" Height="200"
+            Label="Hello ANU!!!">
+
+            <!-- Background 브러시를 XAML에서 미리 선언 -->
+            <local:BgLabelControl.Background>
+                <SolidColorBrush x:Name="BgBrush" Color="Green"/>
+            </local:BgLabelControl.Background>
+
+            <!-- 회전과 크기 조절을 동시에 적용하기 위해 TransformGroup 사용 -->
+            <local:BgLabelControl.RenderTransform>
+                <TransformGroup>
+                    <!-- 기존 회전 변환 -->
+                    <RotateTransform x:Name="ControlRotateTransform" CenterX="150" CenterY="150"/>
+                    <!-- 새로 추가된 크기 조절 변환 -->
+                    <ScaleTransform x:Name="ControlScaleTransform" CenterX="150" CenterY="150"/>
+                </TransformGroup>
+            </local:BgLabelControl.RenderTransform>
+        </local:BgLabelControl>
+    </StackPanel>
+</Window>
